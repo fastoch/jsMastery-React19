@@ -1,8 +1,93 @@
-# React + Vite
+# React 19
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+JavaScript Mastery: https://www.youtube.com/watch?v=dCLhUialKPQ  
+prerequisite = a solid understanding of JavaScript  
+objective = building a movie application
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# What is React?
+
+A JS library created by facebook that powers some of the world's most dynamic UIs (user interfaces).  
+Initially, it was only used for front-end development.  
+
+It's maintained by a strong open-source community constantly innovating with new features.  
+One of these features is **server components**, they simplify your backend workflow by running React on the server side.  
+
+Of course, React isn't alone. Frameworks like Vue.js, Svelte, Astro or Angular are also making waves.  
+But when it comes to popularity, React dominates.  
+
+![image](https://github.com/user-attachments/assets/da62c98b-d005-49bb-8230-c0e980043b80)
+
+React is the backbone of key stacks like **MERN** and **PERN**.  
+It extends to mobile development with **React Native**.  
+And it integrates seamlessly with modern frameworks like **Next.js** for full-stack development.  
+
+With React, you won't see a single page reload or a loading spinner, even when browsing different sections.  
+Everything happens dynamically on one page (SPA = single page application).  
+To make it possible, React uses JavaScript (JS) and the **Virtual DOM**.  
+
+The virtual DOM is like a simplified map of your webpage, a JS object that mirrors the real DOM.  
+When something changes, React creates a new virtual DOM element, then compares it to the old one to pinpoint the difference,  
+and only the changed part of the real DOM is updated, making React blazingly fast.
+
+---
+
+# React Setup
+
+## Node & npm
+
+Before creating a React project, you need **Node.js** installed on your machine.  
+Node is a JS runtime that allows you to run JS code outside of a browser.  
+This is essential because React development involves running tools and scripts on your local machine, and these tools require Node.js.  
+
+When you install Node.js on your machine, you also get a handy tool called **npm** (node package manager).  
+In some cases, you might need to install npm separately.  
+
+Instead of writing everything from scratch, you can use npm to quickly add features like animations, form handling,  
+or even full frameworks by pulling them from its massive collection of ready-to-use libraries.  
+And it also makes it super easy to keep your tools and code up-to-date, ensuring everything works smoothly together.  
+
+In simple terms, npm will save you time and effort by giving you access to a lot of packages to help you build your modern apps more efficiently.
+
+## Pick an IDE
+
+Now that you have Node.js and npm installed, you need a place to write your React code.  
+There are many code editors out there, but I prefer **WebStorm**, as it's a fully-fledged IDE (integrated dev environment) designed specifically for React.  
+As of recently, WebStorm became completely free for non-commercial use.  
+WebStorm offers you everything you need, from a quick project setup, error reporting, an integrated Git system, and more...  
+
+## Git
+
+While it's not mandatory to have Git installed to start learning React, it's absolutely essential for your growth as a developer.  
+
+---
+
+# Create a React project
+
+There are different ways to create a React app, but **Vite** has quickly become a new norm and an industry's favorite.  
+Vite offers faster build times, improved performance, and modern tooling.
+
+To quickly start a new React project with Vite:
+- Open a terminal window within your code editor
+- `cd `into the folder where you host your Dev projects
+- run `npm create vite@latest`
+- name your project (this creates a folder after that name)
+- choose the React framework
+- choose JavaScript or TypeScript (depending on your needs and TypeScript knowledge)
+- `cd` into your freshly created project folder
+- run `npm i` to install all required dependencies
+- then `npm run dev` if you want to run your starter app (accessible at http://localhost:5173/)
+
+Let's see which files and folders have been generated:
+- at the bottom, we have the vite.config.js file, which allows you to customize the build process such as 
+
+
+
+
+
+
+
+@9/127
+---
+EOF
