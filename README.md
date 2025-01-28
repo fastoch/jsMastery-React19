@@ -76,14 +76,25 @@ To quickly start a new React project with Vite:
 - choose the React framework
 - choose JavaScript or TypeScript (depending on your needs and TypeScript knowledge)
 - `cd` into your freshly created project folder
-- run `npm i` to install all required dependencies
+- run `npm i` to install all the dependencies needed to run your app
 - then `npm run dev` if you want to run your starter app (accessible at http://localhost:5173/)
 
 Let's see which files and folders have been generated:
-- at the bottom, we have the vite.config.js file, which allows you to customize the build process such as 
-
-
-
+- at the bottom, we have the `vite.config.js` file, which allows you to **customize the build process**, such as adding plugins, 
+configuring the server settings, and more.
+- the `package.json` file contains the **metadata** of our project, such as its **name**, **scripts**, and **dependencies** needed to run our app.
+  - the dev script starts the development server
+  - the build script creates a production-ready build of our app.
+  - you can run these script by running `npm run dev` or `npm run build` in the terminal.
+- the `package-lock.json` file is automatically generated when your run `npm i`. It **locks down the versions of the dependencies** installed in our project, ensuring that every project installation, regardless of its location, uses the same versions.
+- the `index.html` file is the **entry point** of our app. It contains the HTML structure of our app, in particular, the `<div>` element with the `id="root"` attribute.
+```html
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+```
+- the `main.jsx` file is also the **entry point** of our app. It contains the JavaScript code that initializes our app.
 
 
 
