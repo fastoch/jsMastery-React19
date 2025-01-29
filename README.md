@@ -1,4 +1,4 @@
-# React 19
+# React 19 Full Course (2025)
 
 JavaScript Mastery: https://www.youtube.com/watch?v=dCLhUialKPQ  
 prerequisite = a solid understanding of JavaScript  
@@ -131,11 +131,41 @@ The `App.jsx` file will contain the different components (the **child** componen
 
 ---
 
-## appwrite
+##  Connect our React App to an Appwrite backend
 
-We're going to use Appwrite as our backend. It's an open-source 
+We're going to use Appwrite. It's an open-source backend for your React apps.  
+Just like **Firebase**, Appwrite provides a **backend-as-a-service** solution so you don't have to manage your own servers or databases.  
+
+Go to their website and choose their free plan: https://cloud.appwrite.io/console/onboarding  
+
+We'll use Appwrite to develop a simple algorithm that tracks what our users are searching for on our movie app,  
+and then suggest the top 5 trending movies based on their search history.  
+
+---
+
+# Components
+
+There are 2 ways in which we can define components in React:
+- Class components, not widely used anymore
+- **Functional** components, the recommended modern way
+
+The power of React lies in its component-based architecture.  
+A component is a reusable piece of code that encapsulates a specific functionality or UI element.  
+Components can be nested, meaning a component can contain other components.  
+
+But writing components is not enough, sometimes we want to pass data from one component to another.  
+We can do that by using **props**, which is short for **properties**.  
+Props are a way to pass data from a parent component to a child component.  
+Think of props as arguments you pass to a function.  
+
+---
+
+# Styling our app
 
 
-@15/127
+
+
+
+@20/127
 ---
 EOF
