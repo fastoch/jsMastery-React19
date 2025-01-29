@@ -79,7 +79,7 @@ To quickly start a new React project with Vite:
 - run `npm i` to install all the dependencies needed to run your app
 - then `npm run dev` if you want to run your starter app (accessible at http://localhost:5173/)
 
-## Starter files
+## Starter files & folders
 
 Let's see which files and folders have been generated:
 - at the bottom, we have the `vite.config.js` file, which allows you to **customize the build process**, such as adding plugins, 
@@ -100,7 +100,7 @@ configuring the server settings, and more.
 </body>
 ```
 
-- the `main.jsx` file contains the JavaScript code (the script) that initializes our app.
+- the `main.jsx` file is also the **entry point** of our React app. It's where the <App /> component is rendered.
 ```jsx	
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -111,14 +111,31 @@ createRoot(document.getElementById('root')).render(
 
 - the `App.jsx` file is the **parent component** of our app. It contains the **JSX** (JavaScript XML) code that defines the structure of our app.
 
-React will infuse the `<div id="root">` element of our `index.html` file with our entire application.  
-The App component will contain the different .jsx files (the **child** components) that we will create.  
+React will infuse the `<div id="root">` element of our `index.html` file with our entire application, meaning the <App /> component.  
+The `App.jsx` file will contain the different components (the **child** components) that we will create later on.  
 
-- The `eslint.confiig.js` file is used to configure the ESLint (JavaScript Linter) tool. 
+- The `eslint.config.js` file is used to configure the ESLint (JavaScript Linter) tool.  
+  - ESLint is a popular linting tool that helps you find and fix problems in your code, such as coding style violations, errors, and potential bugs.
+
+- after that, we have `.gitignore`, which is a file used to **exclude certain files and directories** from being tracked by Git.
+  - the most important files to exclude are the `node_modules` folder, and the `.env` file (which contains environment variables).
+
+- the `node_modules` folder contains all the **dependencies** needed to run our app, it gets created when we run `npm i`.
+  - this folder is completely managed by npm, and we should not modify it manually.
+
+- the `public` folder contains static assets such as images, icons and other files that don't need to go through Vite's bundler. 
+
+- the `src` folder contains all our React components (.jsx or .tsx files), and might also contain .css files for styling.
+
+- `App.jsx` is where the main UI of your app will be defined.
+
+---
+
+## appwrite
+
+We're going to use Appwrite as our backend. It's an open-source 
 
 
-
-
-@12/127
+@15/127
 ---
 EOF
