@@ -1,9 +1,6 @@
-import './App.css'
-
 const App = () => {
   return (
-    <div>
-      <h2>Functional Arrow Component</h2>
+    <div className='card-container'>
       <Card title="Star Wars" />
       <Card title="Lord of the Rings" />
       <Card title="Harry Potter" />

@@ -162,6 +162,20 @@ Think of props as arguments you pass to a function.
 
 # Styling our app
 
+There's a lot of ways to style your React app:
+- inline styles
+- CSS 
+- Tailwind CSS
+- Bootstrap
+- Material UI
+- Sass
+- CSS in JS
+- CSS modules
+- ...
+
+The default index.css file is imported within our main.jsx file.  
+
+
 
 
 
