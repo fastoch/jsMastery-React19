@@ -174,12 +174,23 @@ There's a lot of ways to style your React app:
 - ...
 
 The default index.css file is imported within our main.jsx file.  
+In most projects we use a dedicated stylesheet for each component and import it in our component.  
+
+But we could also apply inline styles directly to our components (see our Card component in App.jsx).  
+
+What would happen if we applied both inline styles and an external stylesheet to the same component?  
+The inline styles would override the external styles.  
+
+It's better to stick with one way of styling, and use the one that best fits your project.  
+As of today, the most popular way to style React apps is with **Tailwind CSS**.  
+This is what we'll use later on = Tailwind CSS version 4.
+
+---
 
 
 
 
 
-
-@20/127
+@25/127
 ---
 EOF
