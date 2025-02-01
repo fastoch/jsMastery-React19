@@ -267,7 +267,9 @@ Later on, we'll learn how to use **Tailwind CSS** to style our components.
 After that, we want our buttons to change appearance when being clicked.  
 For that, we'll replace the 'Like' with the following JS expression:
 ```jsx
-<button onClick={() => setHasLiked(!hasLiked)}>
+<button 
+  onClick={() => setHasLiked(!hasLiked)}
+>
   {hasLiked ? 'Liked' : 'Like'}
 </button>
 ```
@@ -293,11 +295,102 @@ To make our state persistent, we can use the **localStorage** API.
 
 ## useEffect()
 
+The second most popular React hook.  
+It's a special tool that lets you do things outside of just displaying stuff on the screen.  
+Like fetching data from a server, or doing some cleanup after the component is removed from the screen.  
+
+Like useState(), it's a function that we can import from React:
+```jsx
+import { useState, useEffect } from 'react'
+```
+
+The syntax is a little different:
+```jsx
+useEffect(() => {
+  console.log(`${title} has been liked: ${hasLiked}`);
+});
+``` 
+The **callback** function is called "the **effect**".  
+
+---
+
+Our effect function is called every time the component is rendered.  
+In our example, we have 3 card components, so our effect function will be called 3 times.  
+
+Actually, it will be called 6 times, because we're running our app in dev mode with the Strict Mode on.  
+As we can see in our main.jsx file:
+```jsx
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+```
+
+When we'll deploy our app in production, it will only be called 3 times (once per each card).  
+
+---
+
+Now, let's say you want to track the number of clicks to each of the movie cards.  
+So you can recommend similar movies to the user.  
+To do that, we need to create a new state variable:
+```jsx
+const [clicks, setClicks] = useState(0);
+```
+
+Then we can display the number of clicks in our card component:
+```jsx
+return (
+  <div className="card">
+    <h2>{title} - {clicks}</h2>
+```
+
+---
+
+>[!important]
+>In more complex interfaces, it is never recommended to update the value of the state by using the state itself.   
+>We should rather write `<button onClick={() => && setClicks((prevState) => prevState + 1)}>`   
+>instead of `<button onClick={() => setClicks(clicks + 1)}>`
+
+Given the above remark, we should write our button like this:
+```jsx
+<button 
+  onClick={() => {
+    setHasLiked((prev) => !prev); // toggle hasLiked
+    setClicks((prevState) => prevState + 1); // increment clicks
+  }}
+>
+  {hasLiked ? 'Liked' : 'Like'} 
+</button>
+```
+
+---
+
+Right now, our useEffect() hook is called every time the component renders.  
+```jsx
+useEffect(() => {
+  console.log(`${title} has been liked: ${hasLiked}`);
+});
+```
+
+To make it run only when something changes, we can pass a second argument to useEffect().  
+This second argument is called the **dependency array**.
+```jsx
+useEffect(() => {
+  console.log(`${title} has been liked: ${hasLiked}`);
+}, [hasLiked]);
+```
+
+Now, our effect function will only run when the value of hasLiked changes.  
+
+If we provide an empty array as the second argument, the effect function will only run once, when the component is first rendered.  
+
+---
 
 
 
 
 
-@35/127
+@41/127
 ---
 EOF

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const App = () => {
   return (
@@ -14,12 +14,22 @@ export default App
 
 const Card = ({ title }) => {
   const [hasLiked, setHasLiked] = useState(false);
+  const [clicks, setClicks] = useState(0);
+  
+  useEffect(() => {
+    console.log(`${title} has been liked: ${hasLiked}`);
+  }, [hasLiked]);
 
   return (
     <div className="card">
-      <h2>{title}</h2>
-      <button onClick={() => setHasLiked(!hasLiked)}>
-        {hasLiked ? 'Liked' : 'Like'}
+      <h2>{title} <br/> {clicks}</h2>
+      <button 
+        onClick={() => {
+          setHasLiked((prev) => !prev); // toggle hasLiked
+          setClicks((prevState) => prevState + 1); // increment clicks
+        }}
+      >
+        {hasLiked ? 'Liked' : 'Like'} 
       </button>
     </div>
   )
