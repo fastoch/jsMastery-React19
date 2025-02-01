@@ -392,6 +392,14 @@ If we provide an empty array as the second argument, the effect function will on
 
 This will be a SPA (Single Page Application) that will display a list of movies.  
 Those movies will be fetched from an external API.  
+It will include a search feature.  
+
+We'll also simulate Netflix's top trending list.  
+Unlike the movies pulled from the API, these rankings are based on actual user searches within the app.  
+The more users search for a particular movie, the higher it will rank.  
+
+
+
 
 
 
