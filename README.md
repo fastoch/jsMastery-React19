@@ -398,6 +398,29 @@ We'll also simulate Netflix's top trending list.
 Unlike the movies pulled from the API, these rankings are based on actual user searches within the app.  
 The more users search for a particular movie, the higher it will rank.  
 
+And of course, this app will be fully responsive across all devices.  
+
+---
+
+## Install Tailwind CSS 
+
+- Open a terminal and run the following command:
+```bash
+npm i tailwindcss @tailwindcss/vite
+```
+This will install Tailwind CSS and its Vite plugin.  
+
+- Configure the Vite plugin by adding the following code to your vite.config.js (or vite.config.ts) file:
+```js
+import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [
+    tailwindcss()
+  ],
+})
+```
 
 
 
@@ -405,6 +428,7 @@ The more users search for a particular movie, the higher it will rank.
 
 
 
-@43/127
+
+@45/127
 ---
 EOF
