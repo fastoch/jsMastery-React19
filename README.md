@@ -342,8 +342,9 @@ Then we can display the number of clicks in our card component:
 ```jsx
 return (
   <div className="card">
-    <h2>{title} - {clicks}</h2>
+    <h2>{title} <br/> {clicks ? clicks : null}</h2>
 ```
+If the number of clicks is 0, it will display nothing.
 
 ---
 
@@ -387,10 +388,15 @@ If we provide an empty array as the second argument, the effect function will on
 
 ---
 
+# Starting our Movie App project
+
+This will be a SPA (Single Page Application) that will display a list of movies.  
+Those movies will be fetched from an external API.  
 
 
 
 
-@41/127
+
+@43/127
 ---
 EOF

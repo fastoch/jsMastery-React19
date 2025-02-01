@@ -22,7 +22,7 @@ const Card = ({ title }) => {
 
   return (
     <div className="card">
-      <h2>{title} <br/> {clicks}</h2>
+      <h2>{title} <br/> {clicks ? clicks : null}</h2>
       <button 
         onClick={() => {
           setHasLiked((prev) => !prev); // toggle hasLiked
