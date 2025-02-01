@@ -176,7 +176,15 @@ There's a lot of ways to style your React app:
 The default index.css file is imported within our main.jsx file.  
 In most projects we use a dedicated stylesheet for each component and import it in our component.  
 
-But we could also apply inline styles directly to our components (see our Card component in App.jsx).  
+But we could also apply inline styles directly to our components, like this:
+```jsx
+<div style={{ BackgroundColor: 'red' }}>Hello World</div>
+```
+The 'style' attribute in JSX expects a JavaScript **object** where CSS properties are camelCased  
+and their values are surrounded with quotes. Hence, the use of **inner curly braces** in the above example.  
+The **outer curly braces** indicate that their content should be evaluated as a **JavaScript expression**.  
+
+---
 
 What would happen if we applied both inline styles and an external stylesheet to the same component?  
 The inline styles would override the external styles.  
@@ -187,10 +195,75 @@ This is what we'll use later on = Tailwind CSS version 4.
 
 ---
 
+# States & Hooks
+
+These are the two main concepts that make React so powerful.  
+
+A **state** is a JavaScript object that stores data that can change over time.  
+It can be compared to a React component's **memory**.  
+It holds information about the component's current state, and it can be updated over time.  
+
+If you declare a regular variable, and then pass it as a prop to your component, React won't be able to track it,  
+and it won't be able to re-render the component (to update the DOM) when the variable's value changes.  
+
+React's rendering process relies on **state** and **props** to decide when and how to re-render a component.  
+
+In our movie app example, we'll create a state that allows users to interact with each card.  
+Users will be able to like or dislike a movie by clicking a button we'll add to our card component.  
+
+First, we need to import the **useState** hook from React: `import { useState } from 'react';`  
+We put imports at the top of our file, before the component definition.  
+
+Then, inside our Card component, we need to declare a state variable using the **useState** hook:
+```jsx
+const Card = ({ title }) => {
+  const [hasLiked, setHasLiked] = useState();
+```
+In this example, we're declaring a state **variable** called `hasLiked`, this is a boolean variable.  
+And then, as the second parameter to this destructured array, we pass a **setter** function that will  
+allow us to update the state variable.  
+
+Within the parentheses of the **useState** hook, we can pass an initial value for our state variable.  
+```jsx
+const Card = ({ title }) => {
+  const [hasLiked, setHasLiked] = useState(false);
+```
+
+---
+
+Keep in mind that, in React, everything that starts with the verb 'use' typically refers to a **hook**.  
+React has many different hooks that allow you to build scalable and complex applications more simply.  
+
+---
+
+Now, let's update our card component to display a button that allows users to like or dislike a movie:
+```jsx
+const Card = ({ title }) => {
+  const [hasLiked, setHasLiked] = useState(false);
+
+  return (
+    <div className="card">
+      <h2>{title}</h2>
+      <button onClick={() => setHasLiked(!hasLiked)}>
+        Like
+      </button>
+    </div>
+  )
+}
+```
+This button has an **onClick** event listener that calls the **setHasLiked** function when the button is clicked.  
+This will toggle the value of the **hasLiked** state variable.  
+
+We need to use a **callback function** to prevent the **setHasLiked** function from being called every time the component renders.  
+The `() => setHasLiked()` syntax tells React to call the **setHasLiked** function only when the button is clicked.  
 
 
 
 
-@25/127
+
+
+
+
+@30/127
 ---
 EOF

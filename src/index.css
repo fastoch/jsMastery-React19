@@ -13,8 +13,16 @@ body {
 h2 {
   color: #f3f3f3;
   text-align: center;
-  margin-bottom: 1rem;
   font-size: 48px;
+}
+
+.card {
+  border: 1px solid #4b5362;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: #31363f;
+  min-height: 2rem;
 }
 
 .card-container {
