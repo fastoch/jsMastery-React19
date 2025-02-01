@@ -199,6 +199,8 @@ This is what we'll use later on = Tailwind CSS version 4.
 
 These are the two main concepts that make React so powerful.  
 
+## useState()
+
 A **state** is a JavaScript object that stores data that can change over time.  
 It can be compared to a React component's **memory**.  
 It holds information about the component's current state, and it can be updated over time.  
@@ -257,13 +259,45 @@ This will toggle the value of the **hasLiked** state variable.
 We need to use a **callback function** to prevent the **setHasLiked** function from being called every time the component renders.  
 The `() => setHasLiked()` syntax tells React to call the **setHasLiked** function only when the button is clicked.  
 
+---
+
+We applied some styling to our 'Like' buttons in our index.css file.  
+Later on, we'll learn how to use **Tailwind CSS** to style our components.  
+
+After that, we want our buttons to change appearance when being clicked.  
+For that, we'll replace the 'Like' with the following JS expression:
+```jsx
+<button onClick={() => setHasLiked(!hasLiked)}>
+  {hasLiked ? 'Liked' : 'Like'}
+</button>
+```
+If hasLiked is true, the button will display 'Liked'. If hasLiked is false, the button will display 'Like'.  
+
+---
+
+When a state changes, React re-renders the component that contains this state.  
+And it happens instantly, without a browser reload.
+
+---
+
+## Local storage
+
+One very **important** thing to mention is that the **state** is **not persistent**.  
+If you refresh the page, the state will be reset to its initial value.  
+Since our initial value is false, the button will display 'Like' when the page is refreshed.  
+
+To make our state persistent, we can use the **localStorage** API.
+
+
+---
+
+## useEffect()
 
 
 
 
 
 
-
-@30/127
+@35/127
 ---
 EOF

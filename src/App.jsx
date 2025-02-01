@@ -19,7 +19,7 @@ const Card = ({ title }) => {
     <div className="card">
       <h2>{title}</h2>
       <button onClick={() => setHasLiked(!hasLiked)}>
-        Like
+        {hasLiked ? 'Liked' : 'Like'}
       </button>
     </div>
   )

@@ -18,7 +18,7 @@ h2 {
 
 .card {
   border: 1px solid #4b5362;
-  padding: 1rem;
+  padding: 0.5rem;
   margin: 0.5rem;
   border-radius: 0.5rem;
   background-color: #31363f;
@@ -31,4 +31,15 @@ h2 {
   justify-content: center;
   max-width: 1024px;
   margin: 0 auto;
+}
+
+button {
+  border: none;
+  font-size: 1rem;
+  background-color: transparent;
+  color: pink;
+  width: 100%;
+  text-align: right;
+  cursor: pointer;
+  margin-top: 5px;
 }
