@@ -68,6 +68,24 @@ While it's not mandatory to have Git installed to start learning React, it's abs
 There are different ways to create a React app, but **Vite** has quickly become a new norm and an industry's favorite.  
 Vite offers faster build times, improved performance, and modern tooling.
 
+## What is Vite?
+
+Vite is a modern **frontend** build tool designed to optimize the development and production processes for web applications.  
+Created by Evan You in **2020**, the creator of Vue.js, Vite (pronounced "veet", meaning "quick" in French).  
+
+Vite's use of **native ES modules** eliminates bundling during development, significantly reducing startup times.  
+Its **HMR** (hot module replacement) feature ensures immediate feedback when editing code.  
+
+For production, Vite uses **Rollup** to bundle and optimize assets, resulting in **smaller bundle** sizes and **faster build** times compared to traditional tools like Webpack.  
+
+While it was initially designed for Vue.js projects, Vite **supports multiple JS frameworks** such as React, Svelte, and others through its **plugin ecosystem**.  
+
+Vite is widely regarded as a next-generation tool for building **fast** and efficient web applications, offering a **superior developer experience** (DX) compared to older tools like Webpack or Parcel.
+
+---
+
+## Create a new React project with Vite
+
 To quickly start a new React project with Vite:
 - Open a terminal window within your code editor
 - `cd `into the folder where you host your Dev projects
@@ -143,7 +161,7 @@ and then suggest the top 5 trending movies based on their search history.
 
 ---
 
-# Components
+# React Components
 
 There are 2 ways in which we can define components in React:
 - Class components, not widely used anymore
@@ -160,7 +178,7 @@ Think of props as arguments you pass to a function.
 
 ---
 
-# Styling our app
+# Styling our React app
 
 There's a lot of ways to style your React app:
 - inline styles
@@ -331,6 +349,8 @@ When we'll deploy our app in production, it will only be called 3 times (once pe
 
 ---
 
+## useState() again
+
 Now, let's say you want to track the number of clicks to each of the movie cards.  
 So you can recommend similar movies to the user.  
 To do that, we need to create a new state variable:
@@ -366,6 +386,8 @@ Given the above remark, we should write our button like this:
 ```
 
 ---
+
+## useEffect() with a dependency array
 
 Right now, our useEffect() hook is called every time the component renders.  
 ```jsx
@@ -404,31 +426,75 @@ And of course, this app will be fully responsive across all devices.
 
 ## Install Tailwind CSS 
 
-- Open a terminal and run the following command:
+### Install Tailwind via npm along with its Vite plugin
+
+Open a terminal and run the following command:
 ```bash
 npm i tailwindcss @tailwindcss/vite
 ```
 This will install Tailwind CSS and its Vite plugin.  
 
-- Configure the Vite plugin by adding the following code to your vite.config.js (or vite.config.ts) file:
+### Configure the Vite plugin
+
+Add the plugin to your vite.config.js (or vite.config.ts) file.  
+Your vite.config.js file should now look like this:
 ```js
 import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
+// https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    tailwindcss()
-  ],
+  plugins: [react(),tailwindcss()],
 })
 ```
 
+### Import Tailwind CSS into your CSS file
+
+In our main CSS file, which is index.css, remove all existing code and add this line:
+```css
+@import "tailwindcss";
+```
+
+That's it, we can start using Tailwind CSS in our project.  
+
+---
+
+### Start using Tailwind CSS
+
+Instead of declaring all the styles within a separate stylesheet, Tailwind CSS allows us to declare all the styles within the HTML itself.  
+
+Let's start by adding a Tailwind CSS class to our App component.  
+In our App.jsx file:
+- remove all existing code
+- type 'rafce' and press Enter to generate a React arrow function component (with a default export) 
+  - this requires having a 'React snippets' extension installed in VS Code, such as 'ES7+ React/Redux/React-Native snippets'
+- add an h1 element with the following class to your div element:
+```jsx
+<h1 className="text-3xl font-bold underline">Hello world!</h1>
+```
+
+There's a **Tailwind CSS extension** in VS Code that tells you exactly which CSS properties that class is applying.  
+
+**How do these utility classes work?**
+- the `text-3xl` class sets the font size to 3xl (3 times the default font size)
+- the `font-bold` class sets the font weight to bold
+- the `underline` class adds an underline to the text
+
+We could change the font by importing a specific Google font inside our index.css file.  
+For example:  
+```css
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+```
+
+### Assets & Styles
+
+- Go to https://github.com/adrianhajdin/react-movies/blob/main/README.md  
+- Click on 'Snippets'
+- 
 
 
 
-
-
-
-
-@45/127
+@50/127
 ---
 EOF
