@@ -1,8 +1,10 @@
 # React 19 Full Course (2025)
 
-JavaScript Mastery: https://www.youtube.com/watch?v=dCLhUialKPQ  
-prerequisite = a solid understanding of JavaScript  
-objective = building a movie application
+JavaScript Mastery: https://www.youtube.com/watch?v=dCLhUialKPQ   
+Repo: https://github.com/adrianhajdin/react-movies/blob/main/README.md
+
+Prerequisite: a solid understanding of JavaScript  
+Objective: building a movie application
 
 ---
 
@@ -491,10 +493,41 @@ For example:
 
 - Go to https://github.com/adrianhajdin/react-movies/blob/main/README.md  
 - Click on 'Snippets'
-- 
+- copy the index.css content
+- paste it into your index.css file
+
+When using TailwindCSS in VS Code, you'll get many 'unknown at rule' warnings.   
+- simply open VS Code settings
+- type 'unknown' in the search bar
+- set the CSS > Lint: Unknown At Rules option to 'Ignore'
+
+---
+
+## Develop Header
+
+Public assets used in the project can be found [here](https://drive.google.com/file/d/1v_r4sFD8Veuj3TBEbNUjWdzLn-upaqwt/view).  
+Download them, extract the 6 files and place them in the public folder.  
+
+In our App.jsx file, our header is as follows:
+```jsx
+<header>
+  <h1>Find <span className='text-gradient'>Movies</span> You'll Enjoy Without the Hassle</h1>
+</header>
+```
+
+The text-gradient class is a custom class that we'll define in our index.css file:
+```css
+@utility text-gradient {
+  @apply bg-linear-to-r from-[#D6C7FF] to-[#AB8BFF] bg-clip-text text-transparent;
+}
+```
+
+## Our fist React component
 
 
 
-@50/127
+
+
+@55/127
 ---
 EOF
