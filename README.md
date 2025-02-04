@@ -515,7 +515,7 @@ In our App.jsx file, our header is as follows:
 </header>
 ```
 
-The text-gradient class is a custom class that we'll define in our index.css file:
+The text-gradient class is a custom utility class that we'll define in our index.css file:
 ```css
 @utility text-gradient {
   @apply bg-linear-to-r from-[#D6C7FF] to-[#AB8BFF] bg-clip-text text-transparent;
@@ -524,10 +524,15 @@ The text-gradient class is a custom class that we'll define in our index.css fil
 
 ## Our fist React component
 
+- Inside the **src** folder, create a new folder called '**components**'.  
+- inside the **components** folder, create a new file called '**Search.jsx**'.
+- within this file, run 'rafce' to quickly spin up a React functional component.
+- head back over to App.jsx, and replace the 'Search' paragraph with the <Search /> component.
+- import the Search component into App.jsx: `import Search from './components/Search'`
 
 
 
 
-@55/127
+@56/127
 ---
 EOF
