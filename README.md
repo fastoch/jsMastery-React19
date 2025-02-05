@@ -530,9 +530,75 @@ The text-gradient class is a custom utility class that we'll define in our index
 - head back over to App.jsx, and replace the 'Search' paragraph with the <Search /> component.
 - import the Search component into App.jsx: `import Search from './components/Search'`
 
+Right now, our search component is not clearly visible.  
+Let's make it show by adding a class to the div element:
+```jsx
+const Search = () => {
+  return (
+    <div className='text-white text-3xl'>Search</div>
+  )
+}
+```
+
+This search component is only keeping track of the search term, not of the movies that match this term.  
+We will display the movies matching the search term below the search component.  
+Hence, we shouldn't create a new state in our search component, but rather in the App component.  
+We will create our new **state** in the App component, and pass it down as a **prop** to the Search component.  
+
+To create the new **state** in the App component, we'll use the **useState()** hook:
+```jsx
+import { useState } from 'react'
+
+const App = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+```
+
+Then, we'll pass the searchTerm state and the setter as **props** to the Search component (inside App.jsx):
+```jsx
+<Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+```
+
+You can think of props as settings you pass to a component so it works properly.  
+
+We now need to pass those props to the Search component (Search.jsx):
+```jsx
+const Search = ({ searchTerm, setSearchTerm }) => {
+  return (
+    <div className='text-white text-3xl'>{searchTerm}</div>
+  )
+}
+```
+
+>[!important]
+>Props should never be changed by the child component that receives them. They are **read-only**.  
+>By the same token, you should never **mutate the state** other than using the **setter** function.   
+
+The searchTerm value will be provided by the user input.  
+We need to add an input element to our Search component so we can get that searchTerm:
+```jsx
+const Search = ({ searchTerm, setSearchTerm }) => {
+  return (
+    <div className='search'>
+      <div>
+        <img src="search.svg" alt="search" />
+        <input 
+          type='text'
+          placeholder='Search through thousands of movies'
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.target.value)}
+        />
+      </div>
+    </div>
+  )
+}
+```
+The onChange event handler will update the searchTerm state.  
 
 
 
-@56/127
+
+
+
+@60/127
 ---
 EOF
