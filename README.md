@@ -574,7 +574,7 @@ const Search = ({ searchTerm, setSearchTerm }) => {
 >By the same token, you should never **mutate the state** other than using the **setter** function.   
 
 The searchTerm value will be provided by the user input.  
-We need to add an input element to our Search component so we can get that searchTerm:
+We need to add an input element to our Search component so we can get that value:
 ```jsx
 const Search = ({ searchTerm, setSearchTerm }) => {
   return (
@@ -592,13 +592,37 @@ const Search = ({ searchTerm, setSearchTerm }) => {
   )
 }
 ```
-The onChange event handler will update the searchTerm state.  
+
+The onChange event handler will update the searchTerm state according to what the user inputs.  
+In real world code, 'event' is shortened to 'e'.  
+
+As the user types in the input field, the searchTerm state will be updated in real time.  
+Later on, we'll keep track of that value to call an API to get the movies that match the search term.  
+
+---
+
+# The Movie Database API
+
+There's an endless list of APIs that you can use for free.  
+In this project, we'll fetch external data from a specialized API called **The Movie Database API** (TMDB).  
+- create an account on https://www.themoviedb.org/
+- Head over to More > API
+- click API Reference
+- search for 'movie'
+- head over to Discover > movie
+- in the Credentials section, you should see your access token
+- copy the token and paste it in your .env file (which contains your environment variables)
+
+We'll need to create our own .env file at the root of our project (same level as the src folder).  
+Let's call this file '**.env.local**'.  
+In the .env.local file, we'll copy our token
 
 
 
 
 
 
-@60/127
+
+@65/127
 ---
 EOF
