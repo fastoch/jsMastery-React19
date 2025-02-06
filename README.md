@@ -4,7 +4,15 @@ JavaScript Mastery: https://www.youtube.com/watch?v=dCLhUialKPQ
 Repo: https://github.com/adrianhajdin/react-movies/blob/main/README.md
 
 Prerequisite: a solid understanding of JavaScript  
-Objective: building a movie application
+Objective: building a movie application  
+
+## Local project setup requires:
+- Node.js installed, along with npm
+- VS Code
+- Git
+- run 'npm install' to install all dependencies
+- create an .env.local file and paste your TMDB API key next to `VITE_TMDB_API_KEY=`
+- then you can run 'npm run dev' to start your local server
 
 ---
 
@@ -603,6 +611,8 @@ Later on, we'll keep track of that value to call an API to get the movies that m
 
 # The Movie Database API
 
+## Get an API key
+
 There's an endless list of APIs that you can use for free.  
 In this project, we'll fetch external data from a specialized API called **The Movie Database API** (TMDB).  
 - create an account on https://www.themoviedb.org/
@@ -618,14 +628,31 @@ We first need to create our own .env file at the root of our project (same level
 Let's call this file '**.env.local**'.  
 
 In the .env.local file, we'll paste our token right next to `VITE_TMDB_API_KEY=`, and save the file.  
+After that, we need to restart our development server by pressing `ctrl + c` in the terminal, and then run `npm run dev`.  
+In some cases, the server will get restarted automatically.  
 
 >[!important]
 >The .env.local file is a special file that tells Vite to load environment variables from it.  
 >It is not committed to the GitHub repository, so you can keep your API key private.  
 >But it also means that you'll need to create a new .env.local file for every new local project setup.  
 
+---
 
+## Fetching data from the API
 
+Which React do we need to use to fetch the movies?
+- The `useEffect()` hook
+
+Let's import it at the top of our App.jsx file:
+```jsx
+import { useState, useEffect } from 'react'
+```
+
+And then let's use it to fetch the movies:
+```jsx
+
+```
+We provided an empty dependency array, so the effect will only run once, when the component is rendered for the first time.  
 
 
 

@@ -1,9 +1,13 @@
 import React from 'react'
 import Search from './components/Search'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+
+  }, [])
 
   return (
     <main>
