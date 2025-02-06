@@ -606,16 +606,26 @@ Later on, we'll keep track of that value to call an API to get the movies that m
 There's an endless list of APIs that you can use for free.  
 In this project, we'll fetch external data from a specialized API called **The Movie Database API** (TMDB).  
 - create an account on https://www.themoviedb.org/
-- Head over to More > API
-- click API Reference
-- search for 'movie'
+- Head over to https://developer.themoviedb.org/reference/intro/getting-started
+- you'll need to log in and create an API key
+- then go back to the previous page and click 'API Reference'
+- search for 'movie' in the 'Jump to' bar
 - head over to Discover > movie
 - in the Credentials section, you should see your access token
-- copy the token and paste it in your .env file (which contains your environment variables)
+- copy the token and paste it in your .env file (which will contain your environment variables)
 
-We'll need to create our own .env file at the root of our project (same level as the src folder).  
+We first need to create our own .env file at the root of our project (same level as the src folder).  
 Let's call this file '**.env.local**'.  
-In the .env.local file, we'll copy our token
+
+In the .env.local file, we'll paste our token right next to `VITE_TMDB_API_KEY=`, and save the file.  
+
+>[!important]
+>The .env.local file is a special file that tells Vite to load environment variables from it.  
+>It is not committed to the GitHub repository, so you can keep your API key private.  
+>But it also means that you'll need to create a new .env.local file for every new local project setup.  
+
+
+
 
 
 
