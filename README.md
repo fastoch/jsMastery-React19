@@ -654,12 +654,24 @@ And then let's use it to fetch the movies:
 ```
 We provided an empty dependency array, so the effect will only run once, when the component is rendered for the first time.  
 
+Now we need to use the API key we have added to our .env.local file in order to make an API call.  
+
+>[!note]
+>An API is an Application Programming Interface.  
+>It's a set of fules that allows one software application to talk to another.  
+>Like for example our React app needs to talk to the TMDB database hosted on some Web server.  
+
+In that same TMDB page from where we have copied our API key, we can find the URL for the API we want to use:  
+![TMDB API URL](image.png)
+
+
+First, in our App.jsx file, we need to create a new variable for the API URL:
+```jsx
+
+```
 
 
 
-
-
-
-@65/127
+@66/127
 ---
 EOF
