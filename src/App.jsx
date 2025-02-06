@@ -2,6 +2,14 @@ import React from 'react'
 import Search from './components/Search'
 import { useState, useEffect } from 'react'
 
+const API_BASE_URL = 'https://api.themoviedb.org/3';
+
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+
+const API_OPTIONS = {
+  
+}
+
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
 

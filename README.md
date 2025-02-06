@@ -10,9 +10,9 @@ Objective: building a movie application
 - Node.js installed, along with npm
 - VS Code
 - Git
-- run 'npm install' to install all dependencies
-- create an .env.local file and paste your TMDB API key next to `VITE_TMDB_API_KEY=`
-- then you can run 'npm run dev' to start your local server
+- run `npm install` or `npm i` to install all the dependencies needed for the project
+- create an .env.local file and paste your TMDB API key right next to `VITE_TMDB_API_KEY=`
+- then you can run `npm run dev` to start your local server
 
 ---
 
@@ -611,6 +611,11 @@ Later on, we'll keep track of that value to call an API to get the movies that m
 
 # The Movie Database API
 
+>[!note]
+>An API is an Application Programming Interface.  
+>It's a set of fules that allows one software application to talk to another.  
+>Like for example our React app needs to talk to the TMDB database hosted on some Web server.  
+
 ## Get an API key
 
 There's an endless list of APIs that you can use for free.  
@@ -640,7 +645,7 @@ In some cases, the server will get restarted automatically.
 
 ## Fetching data from the API
 
-Which React do we need to use to fetch the movies?
+**Which React hook do we need to use to fetch the movies?**
 - The `useEffect()` hook
 
 Let's import it at the top of our App.jsx file:
@@ -650,28 +655,42 @@ import { useState, useEffect } from 'react'
 
 And then let's use it to fetch the movies:
 ```jsx
+const App = () => {
+  const [searchTerm, setSearchTerm] = useState('');
 
+  useEffect(() => {
+
+  }, [])
 ```
-We provided an empty dependency array, so the effect will only run once, when the component is rendered for the first time.  
+We've provided an empty dependency array so the effect will only run once, when the component is rendered for the first time.  
 
-Now we need to use the API key we have added to our .env.local file in order to make an API call.  
-
->[!note]
->An API is an Application Programming Interface.  
->It's a set of fules that allows one software application to talk to another.  
->Like for example our React app needs to talk to the TMDB database hosted on some Web server.  
+- Now, we need to use the API key we have added to our .env.local file in order to make an API call.  
+- We also need to provide the URL of the API we want to use.  
 
 In that same TMDB page from where we have copied our API key, we can find the URL for the API we want to use:  
 ![TMDB API URL](image.png)
 
-
-First, in our App.jsx file, we need to create a new variable for the API URL:
+Right above the App function, we need to create a new variable that will store the API URL:
 ```jsx
+const API_BASE_URL = 'https://api.themoviedb.org/3';
 
+const App = () => {
+```
+We haven't copied the end of the URL (/discover/movie) because we'll craft that part later on.  
+For now, we just want to have the base part of the URL.  
+
+After that, we can also create a variable to store the API key:
+```jsx
+const API_BASE_URL = 'https://api.themoviedb.org/3';
+
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+
+const App = () => {
 ```
 
+Now we have to define the API options with yet another variable:
+```jsx
 
 
-@66/127
 ---
 EOF
