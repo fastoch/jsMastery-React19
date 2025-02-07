@@ -643,7 +643,7 @@ In some cases, the server will get restarted automatically.
 
 ---
 
-## Fetching data from the API
+## Fetching data (movies) from the API
 
 **Which React hook do we need to use to fetch the movies?**
 - The `useEffect()` hook
@@ -659,7 +659,7 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-
+    // calling the function that will fetch movies from the API
   }, [])
 ```
 We've provided an empty dependency array so the effect will only run once, when the component is rendered for the first time.  
@@ -690,6 +690,56 @@ const App = () => {
 
 Now we have to define the API options with yet another variable:
 ```jsx
+import { useState, useEffect } from 'react'
+
+const API_BASE_URL = 'https://api.themoviedb.org/3';
+
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+
+const API_OPTIONS = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',  // the kind of data we accept from the API
+    Authorization: `Bearer ${API_KEY}`
+  }
+}
+```
+
+We're finally ready to define and call the function that will fetch the movies:
+```jsx
+const fetchMovies = async () => {
+  try { 
+
+  } catch (error) {
+    console.error(`Error while fetching movies: ${error}`);
+  }
+}
+```
+In case the API call fails, we'll log an error message to the console.  
+
+But we can also display that error in the browser. We can do that by declaring a new state variable:
+```jsx
+const App = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const [errorMessage, setErrorMessage] = useState('');
+```
+
+And then we can use that to set a specific message in the catch block:
+```jsx
+const fetchMovies = async () => {
+  try { 
+
+  } catch (error) {
+    console.error(`Error while fetching movies: ${error}`);
+    setErrorMessage('An error occurred while fetching movies. Please try again later.');
+  }
+}
+```
+
+And now, we can display that error message in the UI, right below our search component:
+```jsx
+
 
 
 ---
