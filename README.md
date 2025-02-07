@@ -709,7 +709,10 @@ We're finally ready to define and call the function that will fetch the movies:
 ```jsx
 const fetchMovies = async () => {
   try { 
-
+    // endpoint for fetching movies and sorting them by popularity (descending)
+    const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;  
+    // calling the endpoint with the API options
+    const response = await fetch(endpoint, API_OPTIONS); // fetch is a built-in JS function
   } catch (error) {
     console.error(`Error while fetching movies: ${error}`);
   }
@@ -729,7 +732,10 @@ And then we can use that to set a specific message in the catch block:
 ```jsx
 const fetchMovies = async () => {
   try { 
-
+    // endpoint for fetching movies and sorting them by popularity (descending)
+    const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;  
+    // calling the endpoint with the API options
+    const response = await fetch(endpoint, API_OPTIONS);
   } catch (error) {
     console.error(`Error while fetching movies: ${error}`);
     setErrorMessage('An error occurred while fetching movies. Please try again later.');
@@ -737,8 +743,30 @@ const fetchMovies = async () => {
 }
 ```
 
-And now, we can display that error message in the UI, right below our search component:
+And now, we can display that error message in a dedicated section, right below our search component:
 ```jsx
+return (
+  <main>
+    <div className="pattern"/>
+
+    <div className="wrapper">
+      <header>
+        <img src="./hero.png" alt="Hero Banner" />
+        <h1>Find <span className='text-gradient'>Movies</span> You'll Enjoy Without the Hassle</h1>
+      </header>
+
+      <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+
+      <section className='all-movies'>
+        <h2>All Movies</h2>
+        {errorMessage && <p className='text-red-500'>{errorMessage}</p>}
+      </section>
+    </div>
+  </main>
+)
+```
+The `&&` operator in JavaScript checks if the left-hand side is truthy.  
+If there is an error message, the right-hand side will be displayed.  
 
 
 

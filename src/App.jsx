@@ -21,7 +21,10 @@ const App = () => {
 
   const fetchMovies = async () => {
     try { 
-
+      // endpoint for fetching movies and sorting them by popularity (descending)
+      const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;  
+      // calling the endpoint with the API options
+      const response = await fetch(endpoint, API_OPTIONS);
     } catch (error) {
       console.error(`Error while fetching movies: ${error}`);
       setErrorMessage('An error occurred while fetching movies. Please try again later.');
@@ -29,7 +32,7 @@ const App = () => {
   }
 
   useEffect(() => {
-
+    // fetch function
   }, [])
 
   return (
@@ -43,6 +46,11 @@ const App = () => {
         </header>
 
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+
+        <section className='all-movies'>
+          <h2>All Movies</h2>
+          {errorMessage && <p className='text-red-500'>{errorMessage}</p>}
+        </section>
       </div>
     </main>
   )
