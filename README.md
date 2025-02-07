@@ -768,12 +768,37 @@ return (
 The `&&` operator in JavaScript checks if the left-hand side is truthy.  
 If there is an error message, the right-hand side will be displayed.  
 
-Finally, we can call the fetchMovies function in the useEffect hook:
+Finally, we can call the fetchMovies function in the useEffect hook, so it gets called when the page loads:
 ```jsx
 useEffect(() => {
   fetchMovies();
 }, []);
 ```
+
+But yet nothing is displayed on the page. That's because we need to parse the response from the API.  
+```jsx
+try { 
+  // endpoint for fetching movies and sorting them by popularity (descending)
+  const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;  
+  // calling the endpoint with the API options
+  const response = await fetch(endpoint, API_OPTIONS);
+  // parsing the response into a json object
+  if (!response.ok) {
+    throw new Error('Failed to fetch movies');
+  }
+  const data = await response.json(); // if successful response, parse the data
+  console.log(data); // just to see what we get from the API
+
+} catch (error) {
+  console.error(`Error while fetching movies: ${error}`);
+  setErrorMessage('An error occurred while fetching movies. Please try again later.');
+}
+```
+The `.ok` property of the response object is a boolean that indicates whether the HTTP response status code is in the range of 200–299 (which represents a successful response).  
+
+Now we can infuse our React application with all that data and show it to the user.  
+
+
 
 ---
 EOF
