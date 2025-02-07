@@ -768,7 +768,12 @@ return (
 The `&&` operator in JavaScript checks if the left-hand side is truthy.  
 If there is an error message, the right-hand side will be displayed.  
 
-
+Finally, we can call the fetchMovies function in the useEffect hook:
+```jsx
+useEffect(() => {
+  fetchMovies();
+}, []);
+```
 
 ---
 EOF
