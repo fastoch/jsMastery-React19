@@ -796,6 +796,8 @@ try {
 ```
 The `.ok` property of the response object is a boolean that indicates whether the HTTP response status code is in the range of 200–299 (which represents a successful response).  
 
+---
+
 Now we can infuse our React application with all that data and show it to the user.  
 
 

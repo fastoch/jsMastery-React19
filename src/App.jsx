@@ -15,11 +15,17 @@ const API_OPTIONS = {
 }
 
 const App = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-
+  const [searchTerm, setSearchTerm] = useState(''); 
   const [errorMessage, setErrorMessage] = useState('');
+  const [movies, setMovies] = useState([]); // an array to store the movies fetched from the API
+  
+  const [isLoading, setIsLoading] = useState(false); // a boolean to track if the movies are being fetched
+  // we'll use the above state to conditionnally render a loading indicator
 
   const fetchMovies = async () => {
+    // set the loading state to true so the loading indicator is displayed as soon as the function is called
+    setIsLoading(true); 
+
     try { 
       // endpoint for fetching movies and sorting them by popularity (descending)
       const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;  
@@ -32,9 +38,28 @@ const App = () => {
       const data = await response.json(); // if successful response, parse the data
       console.log(data); // just to see what we get from the API (over 48000 pages and almost a million movies)
 
+      // if we get no response, set the error message, and set the movies state to an empty array
+      if(data.Response === 'False') {
+        setErrorMessage(data.Error || 'Failed to fetch movies');
+        setMovies([]);
+        return; // exit out of the function
+      }
+
+      // if we get a response, set the movies state with the fetched data
+      setMovies(data.results || []);
+
+      /*
+      The empty array in `setMovies(data.results || [])` ensures that the `movies` state is always set to a valid array,  
+      even if the API response does not include the expected `results` property or if it is `null` or `undefined`.
+      */
+
     } catch (error) {
       console.error(`Error while fetching movies: ${error}`);
       setErrorMessage('An error occurred while fetching movies. Please try again later.');
+
+    } finally {
+      // set the loading state to false after the fetch is complete
+      setIsLoading(false);
     }
   }
 
