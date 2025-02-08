@@ -24,13 +24,15 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false); // a boolean to track if the movies are being fetched
   // we'll use the above state to conditionnally render a loading indicator
 
-  const fetchMovies = async () => {
+  const fetchMovies = async (query = '') => {
     // set the loading state to true so the loading indicator is displayed as soon as the function is called
     setIsLoading(true); 
 
     try { 
       // endpoint for fetching movies and sorting them by popularity (descending)
-      const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;  
+      const endpoint = query ?
+        `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
+        : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;  
       // calling the endpoint with the API options
       const response = await fetch(endpoint, API_OPTIONS);
       // parsing the response into a json object
@@ -66,8 +68,8 @@ const App = () => {
   }
 
   useEffect(() => {
-    fetchMovies(); // calling the fetchMovies function when the App starts
-  }, []);
+    fetchMovies(searchTerm); // calling the fetchMovies function when the App starts
+  }, [searchTerm]); // calling the fetchMovies function when the searchTerm changes
 
   return (
     <main>
