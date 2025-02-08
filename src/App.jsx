@@ -1,5 +1,6 @@
 import React from 'react'
 import Search from './components/Search'
+import Spinner from './components/Spinner'
 import { useState, useEffect } from 'react'
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
@@ -80,7 +81,7 @@ const App = () => {
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
         <section className='all-movies'>
-          <h2>All Movies</h2>
+          <h2 className='mt-[32px]'>All Movies</h2>
 
           {/*
           Quick note about using parentheses with the ternary operator:
@@ -89,14 +90,20 @@ const App = () => {
           */}
 
           {isLoading ? (
-            <p className='text-white'>Loading...</p>
+            <Spinner />
           ) : errorMessage ? (
             <p className='text-red-500'>{errorMessage}</p>
           ) : (
             <ul>
-              {movies.map((movie) => {
-
-              })}
+              {/* 
+              now we will map over the movies array and display each movie title in a paragraph
+              we won't open a function block by using curly braces but we will use parentheses
+              this will keep our code cleaner since we won't have to use a return statement
+              the parentheses are the same as using a return statement
+              */}
+              {movies.map((movie) => (
+                <p key={movie.id} className='text-white'>{movie.title}</p>
+              ))}
             </ul>
           )}
         </section>
