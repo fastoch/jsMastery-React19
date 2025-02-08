@@ -58,13 +58,13 @@ const App = () => {
       setErrorMessage('An error occurred while fetching movies. Please try again later.');
 
     } finally {
-      // set the loading state to false after the fetch is complete
+      // set the loading state to false after the fetch is complete (whether successful or not)
       setIsLoading(false);
     }
   }
 
   useEffect(() => {
-    fetchMovies();
+    fetchMovies(); // calling the fetchMovies function when the App starts
   }, []);
 
   return (
@@ -81,7 +81,24 @@ const App = () => {
 
         <section className='all-movies'>
           <h2>All Movies</h2>
-          {errorMessage && <p className='text-red-500'>{errorMessage}</p>}
+
+          {/*
+          Quick note about using parentheses with the ternary operator:
+          parentheses are not strictly required for single-line expressions,  
+          but are essential for multi-line JSX to ensure proper parsing and readability.
+          */}
+
+          {isLoading ? (
+            <p className='text-white'>Loading...</p>
+          ) : errorMessage ? (
+            <p className='text-red-500'>{errorMessage}</p>
+          ) : (
+            <ul>
+              {movies.map((movie) => {
+
+              })}
+            </ul>
+          )}
         </section>
       </div>
     </main>
