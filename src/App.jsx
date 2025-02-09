@@ -3,6 +3,7 @@ import Search from './components/Search'
 import Spinner from './components/Spinner'
 import MovieCard from './components/MovieCard'  
 import { useState, useEffect } from 'react'
+import { useDebounce } from 'react-use'
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -23,6 +24,12 @@ const App = () => {
   
   const [isLoading, setIsLoading] = useState(false); // a boolean to track if the movies are being fetched
   // we'll use the above state to conditionnally render a loading indicator
+
+  // optimizing the search by limiting the number of requests to the API
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
+  // wait for the user to stop typing for 1 second before making the request to the API
+  useDebounce(() => setDebouncedSearchTerm(searchTerm), 1000, [searchTerm]); 
+  // we'll need to use the debouncedSearchTerm when calling the fetchMovies function in the useEffect hook
 
   const fetchMovies = async (query = '') => {
     // set the loading state to true so the loading indicator is displayed as soon as the function is called
@@ -70,8 +77,8 @@ const App = () => {
   }
 
   useEffect(() => {
-    fetchMovies(searchTerm); // calling the fetchMovies function when the App starts
-  }, [searchTerm]); // calling the fetchMovies function when the searchTerm changes
+    fetchMovies(debouncedSearchTerm); // calling the fetchMovies function when the App starts
+  }, [debouncedSearchTerm]); // calling the fetchMovies function when the searchTerm changes
 
   return (
     <main>
