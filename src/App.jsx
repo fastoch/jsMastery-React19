@@ -31,7 +31,9 @@ const App = () => {
     try { 
       // endpoint for fetching movies and sorting them by popularity (descending)
       const endpoint = query ?
+        // if there is a search term, use the search endpoint
         `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
+        // else, use the discover endpoint
         : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;  
       // calling the endpoint with the API options
       const response = await fetch(endpoint, API_OPTIONS);
