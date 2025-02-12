@@ -29,7 +29,7 @@ const App = () => {
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
   // wait for the user to stop typing for 1 second before making the request to the API
   useDebounce(() => setDebouncedSearchTerm(searchTerm), 1000, [searchTerm]); 
-  // we'll need to use the debouncedSearchTerm when calling the fetchMovies function in the useEffect hook
+  // we'll need to pass debouncedSearchTerm when calling the fetchMovies function in the useEffect hook
 
   const fetchMovies = async (query = '') => {
     // set the loading state to true so the loading indicator is displayed as soon as the function is called
