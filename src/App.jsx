@@ -4,6 +4,7 @@ import Spinner from './components/Spinner'
 import MovieCard from './components/MovieCard'  
 import { useState, useEffect } from 'react'
 import { useDebounce } from 'react-use'
+import { updateSearchCount } from './appwrite.js'
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -65,6 +66,8 @@ const App = () => {
       The empty array in `setMovies(data.results || [])` ensures that the `movies` state is always set to a valid array,  
       even if the API response does not include the expected `results` property or if it is `null` or `undefined`.
       */
+
+      updateSearchCount(); 
 
     } catch (error) {
       console.error(`Error while fetching movies: ${error}`);
