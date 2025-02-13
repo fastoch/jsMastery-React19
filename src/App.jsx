@@ -67,7 +67,7 @@ const App = () => {
       even if the API response does not include the expected `results` property or if it is `null` or `undefined`.
       */
 
-      updateSearchCount(); 
+      updateSearchCount(); // update the search count in the database & update the trending movies bar 
 
     } catch (error) {
       console.error(`Error while fetching movies: ${error}`);
