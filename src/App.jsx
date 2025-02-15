@@ -44,12 +44,14 @@ const App = () => {
         `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
         // else, use the discover endpoint
         : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;  
-      // calling the endpoint with the API options
+      
+        // calling the endpoint with the API options
       const response = await fetch(endpoint, API_OPTIONS);
-      // parsing the response into a json object
+
       if (!response.ok) {
         throw new Error('Failed to fetch movies');
       }
+      
       const data = await response.json(); // if successful response, parse the data
       console.log(data); // just to see what we get from the API (over 48000 pages and almost a million movies)
 
