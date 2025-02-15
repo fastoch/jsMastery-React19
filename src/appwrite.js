@@ -40,3 +40,18 @@ export const updateSearchCount = async (searchTerm, movie) => {
     console.error(error);
   }// if it doesn't, create a new document with the search term and a count of 1
 }
+
+export const getTrendingMovies = async () => {
+  try {
+    const result = await database.listDocuments(DATABASE_ID, COLLECTION_ID, [
+      Query.limit(5),
+      Query.orderDesc('count')
+    ])
+    // the above query will return the 5 most searched terms
+
+    return result.documents;
+    
+  } catch (error) {
+    console.error(error);
+  }
+}

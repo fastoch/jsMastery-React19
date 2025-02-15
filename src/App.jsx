@@ -22,6 +22,7 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState(''); 
   const [errorMessage, setErrorMessage] = useState('');
   const [movies, setMovies] = useState([]); // an array to store the movies fetched from the API
+  const [trendingMovies, setTrendingMovies] = useState([]); // trending movies fetched from appwrite
   
   const [isLoading, setIsLoading] = useState(false); // a boolean to track if the movies are being fetched
   // we'll use the above state to conditionnally render a loading indicator
