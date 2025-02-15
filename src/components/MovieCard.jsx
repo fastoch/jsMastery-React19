@@ -1,6 +1,11 @@
 import React from 'react'
 import { useDebounce } from 'react-use'
 
+/*
+The following functional component accepts a movie object as its argument. 
+Then, instead of accessing the properties using props.movie.title, props.movie.vote_average, etc., 
+the code uses destructuring to directly extract values from the nested movie object.
+*/
 const MovieCard = ({ movie: { title, vote_average, poster_path, release_date, original_language } }) => {
   return (
     <div className='movie-card'>

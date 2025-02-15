@@ -67,7 +67,13 @@ const App = () => {
       even if the API response does not include the expected `results` property or if it is `null` or `undefined`.
       */
 
-      updateSearchCount(); // update the search count in the database & update the trending movies bar 
+      // if the search bar is not empty, update the search count in the appwrite database
+      if (query && data.results.length > 0) {  // the "> 0" is not necessary, just for clarity
+        await updateSearchCount(query, data.results[0]);
+      }
+      // the updateSearchCount() function is defined in appwrite.js, hence the import at the top
+      // it will feed our appwrite collection with a new record for each search term
+      // this new record will include the search term, the number of times it's been entered (count), the movie ID, and the poster URL
 
     } catch (error) {
       console.error(`Error while fetching movies: ${error}`);
@@ -114,7 +120,7 @@ const App = () => {
               now we will map over the movies array and display each movie title in a paragraph
               we won't open a function block by using curly braces but we will use parentheses
               this will keep our code cleaner since we won't have to use a return statement
-              the parentheses are the same as using a return statement
+              using parentheses is the same as using a return statement
               */}
               {movies.map((movie) => (
                 <MovieCard key={movie.id} movie={movie} />
