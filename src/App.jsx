@@ -4,7 +4,7 @@ import Spinner from './components/Spinner'
 import MovieCard from './components/MovieCard'  
 import { useState, useEffect } from 'react'
 import { useDebounce } from 'react-use'
-import { updateSearchCount } from './appwrite.js'
+import { getTrendingMovies, updateSearchCount } from './appwrite.js'
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -69,7 +69,7 @@ const App = () => {
       */
 
       // if the search bar is not empty, update the search count in the appwrite database
-      if (query && data.results.length > 0) {  // the "> 0" is not necessary, just for clarity
+      if (query && data.results.length > 0) {  // the "> 0" is not necessary, it's just for clarity
         await updateSearchCount(query, data.results[0]);
       }
       // the updateSearchCount() function is defined in appwrite.js, hence the import at the top
@@ -86,9 +86,22 @@ const App = () => {
     }
   }
 
+  const loadTrendingMovies = async () => {
+    try {
+      const trendingMovies = await getTrendingMovies();
+      setTrendingMovies(trendingMovies);
+    } catch (error) {
+      console.error(`Error while fetching trending movies: ${error}`);
+    }
+  }
+
   useEffect(() => {
-    fetchMovies(debouncedSearchTerm); // calling the fetchMovies function when the App starts
-  }, [debouncedSearchTerm]); // calling the fetchMovies function when the searchTerm changes
+    fetchMovies(debouncedSearchTerm); 
+  }, [debouncedSearchTerm]); // calling the fetchMovies function every time the searchTerm changes
+
+  useEffect(() => {
+    loadTrendingMovies();
+  }, []); // calling the loadTrendingMovies function only once, when the app loads
 
   return (
     <main>
@@ -98,12 +111,28 @@ const App = () => {
         <header>
           <img src="./hero.png" alt="Hero Banner" />
           <h1>Find <span className='text-gradient'>Movies</span> You'll Enjoy Without the Hassle</h1>
-        </header>
 
-        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        </header>
+        
+        {/* The `&&` operator in JavaScript checks if the left-hand side is truthy.  
+            If trendingMovies exists, we'll display the trending movies section. */}
+        {trendingMovies.length > 0 && (
+          <section className="trending">
+            <h2>Trending Movies</h2>
+            <ul>
+              {trendingMovies.map((movie, index) => (
+                <li key={movie.movie_id}> {/* using the movie_id from our appwrite collection */}
+                  <p>{index + 1}</p>     
+                  <img src={movie.poster_url} />   
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         <section className='all-movies'>
-          <h2 className='mt-[32px]'>All Movies</h2>
+          <h2 className='mt-[32px]'>All movies returned by your search</h2>
 
           {/*
           Quick note about using parentheses with the ternary operator:

@@ -1,5 +1,4 @@
 import React from 'react'
-import { useDebounce } from 'react-use'
 
 /*
 The following functional component accepts a movie object as its argument. 
